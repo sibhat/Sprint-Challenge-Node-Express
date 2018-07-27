@@ -21,8 +21,11 @@ server.get('/projects', (req, res, next)=>{
 // Get /projects with Id
 server.get('/projects/:id', (req, res, next)=>{
     projectDb.get(req.params.id)
-    .then(result => projectDb.getProjectActions(req.params.id))
-    .then(resultWithActions =>res.status(200).json({result: result, actions: resultWithActions}))
+    .then(result => {
+        projectDb.getProjectActions(req.params.id)
+        .then(resultWithActions =>res.status(200).json({result: result}))
+    })
+    
     .catch(eror => next({code: 500, message: eror.message}))
 })
 

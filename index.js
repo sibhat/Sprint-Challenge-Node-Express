@@ -108,6 +108,7 @@ server.post('/actions', (req, res, next)=>{
             next({code: 400, message: 'description missing'})
         }
         postAction.project_id ? null : next({code: 400, message: 'project_id missing'})
+        postAction.notes ? null : next({code: 400, message: 'note missing'})
     }
 
     actionDb.insert(postAction)
@@ -130,6 +131,7 @@ server.put('/actions/:id', (req, res, next)=>{
             next({code: 400, message: 'description missing'})
         }
         updateAction.project_id ? null : next({code: 400, message: 'project_id missing'})
+        postAction.note ? null : next({code: 400, message: 'note missing'})
     }
 
     actionDb.update(id, updateAction)

@@ -4,7 +4,6 @@ const mappers = require('./mappers');
 module.exports = {
   get: function(id) {
     let query = db('actions');
-
     if (id) {
       return query
         .where('id', id)
